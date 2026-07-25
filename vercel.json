@@ -4,6 +4,7 @@
   "trailingSlash": false,
   "redirects": [
     { "source": "/index.html", "destination": "/", "permanent": true },
+    { "source": "/index", "destination": "/", "permanent": true },
     { "source": "/about.html", "destination": "/about", "permanent": true },
     { "source": "/features.html", "destination": "/features", "permanent": true },
     { "source": "/how-it-works.html", "destination": "/how-it-works", "permanent": true },
@@ -13,6 +14,18 @@
     { "source": "/roadmap.html", "destination": "/roadmap", "permanent": true },
     { "source": "/download.html", "destination": "/download", "permanent": true },
     { "source": "/driver-signup.html", "destination": "/driver-signup", "permanent": true }
+  ],
+  "rewrites": [
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/features", "destination": "/features.html" },
+    { "source": "/how-it-works", "destination": "/how-it-works.html" },
+    { "source": "/screens", "destination": "/screens.html" },
+    { "source": "/drivers", "destination": "/drivers.html" },
+    { "source": "/payments", "destination": "/payments.html" },
+    { "source": "/roadmap", "destination": "/roadmap.html" },
+    { "source": "/download", "destination": "/download.html" },
+    { "source": "/driver-signup", "destination": "/driver-signup.html" }
   ],
   "headers": [
     {

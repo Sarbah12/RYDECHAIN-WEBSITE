@@ -3,6 +3,18 @@
  * Set <body data-page="features"> (etc.) for active nav highlighting.
  */
 (function () {
+  function stripHtmlFromUrl() {
+    const path = window.location.pathname;
+    if (!path.endsWith('.html') && path !== '/index') return;
+    const clean = path
+      .replace(/\/index\.html$/i, '/')
+      .replace(/\.html$/i, '')
+      .replace(/\/index$/i, '/') || '/';
+    window.history.replaceState(null, '', `${clean}${window.location.search}${window.location.hash}`);
+  }
+
+  stripHtmlFromUrl();
+
   const PAGES = {
     home: '/',
     features: '/features',
