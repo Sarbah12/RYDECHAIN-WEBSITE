@@ -34,9 +34,30 @@ Single page, in section order:
 | `index.html` | The whole page — all sections above |
 | `styles.css` | Brand tokens and all layout/responsive rules |
 | `script.js` | Mobile nav toggle and scroll-reveal animations |
-| `assets/logo.png` | White "R" mark on brand purple (cropped to the glyph) |
+| `assets/logo.png` | White "R" mark on brand purple |
 | `assets/logo-original.png` | Untouched app icon, dark-indigo R — kept for reference |
 | `assets/favicon.png`, `assets/mark.png` | Generated from `logo.png` |
+| `assets/screens/*.png` | Real captures of the app's screens (see below) |
+
+## App screens
+
+The phone frames show **real screens from the RydeChain app**, not mockups. They
+were captured from the Expo web build (`npx expo start --web`) at a 390×844
+viewport, then downscaled to 2x for the web.
+
+| File | Screen |
+|------|--------|
+| `01-onboarding-share.png` | Onboarding — "Sharing Ride in affordable way" |
+| `02-onboarding-price.png` | Onboarding — "Its transparent & priceless" |
+| `03-onboarding-choice.png` | Onboarding — "you have a say in the ride" |
+| `04-auth.png` | Create account — register as Rider or Driver |
+
+Screens behind authentication aren't included, since capturing them would need a
+real account. To refresh these, start the app's web build and re-capture at the
+same viewport.
+
+No emoji anywhere in the page — every glyph is an inline SVG icon so rendering is
+identical across platforms.
 
 ## Brand
 
