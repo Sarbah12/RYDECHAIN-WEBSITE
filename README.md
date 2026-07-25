@@ -35,10 +35,27 @@ Single page, in section order:
 real RydeChain API — it is not a mock form.
 
 1. **Account** → `POST /auth/register` with `role: "driver"`, then
-   `POST /auth/login` to get an access token
-2. **Documents** → `POST /drivers/me/documents/{type}` (multipart), one call per
-   file, uploaded as soon as it's picked
+   `POST /auth/login` to get an access token. Existing drivers can sign in
+   instead — registration returns `409` on a duplicate email, and the form
+   points them at the sign-in card.
+2. **Documents** → on entering this step, `GET /drivers/me/documents` restores
+   what's already on file (including rejected ones and their review note), so a
+   part-finished application isn't lost. Each file then goes to
+   `POST /drivers/me/documents/{type}` (multipart, field name `file`) as soon as
+   it's picked.
 3. **Submit** → `POST /drivers/me/documents/submit`
+
+### Keeping the two in sync
+
+The page duplicates several server rules client-side (password 8–128, phone ≥ 9
+digits, JPG/PNG/WebP, 5 MB) so people are told before a wasted round trip. Those
+copies are pinned by `backend/tests/test_web_signup_contract.py` — it asserts
+them against the real schemas and services, so changing a limit on the server
+fails the test and names this file as the thing to update. Run it with:
+
+```bash
+.venv/bin/python -m pytest tests/test_web_signup_contract.py -q
+```
 
 All five document types are required, matching `REQUIRED_TYPES` in
 `backend/app/services/driver_document_service.py`: `profile`, `license`,

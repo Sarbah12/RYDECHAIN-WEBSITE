@@ -100,18 +100,42 @@
 
         <div class="field">
           <label for="phone">Phone number</label>
-          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+233…" required />
-          <div class="hint">Riders use this to reach you about a trip.</div>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+233 20 123 4567" required />
+          <div class="hint">At least 9 digits. Riders use this to reach you about a trip.</div>
         </div>
 
         <div class="field">
           <label for="password">Password</label>
-          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required />
-          <div class="hint">At least 8 characters.</div>
+          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="128" required />
+          <div class="hint">Between 8 and 128 characters.</div>
         </div>
 
         <div class="form-actions">
           <button class="btn btn-primary" type="submit" id="createBtn">Create account &amp; continue</button>
+          <button class="btn btn-ghost" type="button" id="toSignIn">I already have an account</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ---------- Step 1b: sign in (existing drivers) ---------- -->
+    <div class="form-card step" id="step1b">
+      <h2>Sign in to continue</h2>
+      <p class="sub">Already registered as a driver? Sign in to pick up where you left off with your documents.</p>
+
+      <div class="alert err" id="errSignIn" role="alert"></div>
+
+      <form id="signInForm" novalidate>
+        <div class="field">
+          <label for="siEmail">Email address</label>
+          <input id="siEmail" type="email" autocomplete="email" required />
+        </div>
+        <div class="field">
+          <label for="siPassword">Password</label>
+          <input id="siPassword" type="password" autocomplete="current-password" minlength="8" maxlength="128" required />
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="signInBtn">Sign in &amp; continue</button>
+          <button class="btn btn-ghost" type="button" id="toCreate">Create a new account</button>
         </div>
       </form>
     </div>
@@ -125,6 +149,7 @@
       </p>
 
       <div class="alert err" id="err2" role="alert"></div>
+      <div class="alert ok" id="status2" role="status"></div>
       <div class="alert info show" id="info2">
         Tap a card to choose a file. Take the photo in good light and make sure
         every corner of the document is visible.

@@ -1,23 +1,33 @@
 /**
  * Driver registration against the RydeChain API.
  *
- * Flow mirrors what the mobile app does:
- *   1. POST /auth/register        (role: driver)
- *   2. POST /auth/login           -> access token
- *   3. POST /drivers/me/documents/{type}  (multipart, one call per document)
- *   4. POST /drivers/me/documents/submit  (only once all five are present)
+ * Endpoints used (see backend/app/api/v1/routes/{auth,drivers}.py):
+ *   POST /auth/register                   role: "driver"
+ *   POST /auth/login                      -> { access_token, refresh_token }
+ *   GET  /drivers/me/documents            -> restore what's already uploaded
+ *   POST /drivers/me/documents/{type}     multipart field name: "file"
+ *   POST /drivers/me/documents/submit     only once all five are present
  *
- * The access token is kept in memory only — never localStorage — so it dies
- * with the tab rather than sitting around for any injected script to read.
+ * Limits below deliberately mirror the server so a file is rejected before a
+ * wasted upload. They are asserted against the real schemas by the contract
+ * check in the repo — if the server changes, update both together.
+ *
+ * The access token is kept in memory only, never localStorage, so it dies with
+ * the tab rather than sitting around for an injected script to read.
  */
 
 const API_BASE =
   window.RYDECHAIN_API_URL || 'https://rydechain-production.up.railway.app/api/v1';
 
-// Must match REQUIRED_TYPES in backend/app/services/driver_document_service.py
+// Mirrors REQUIRED_TYPES in backend/app/services/driver_document_service.py
 const REQUIRED_DOCS = ['profile', 'license', 'registration', 'insurance', 'background'];
-const MAX_BYTES = 5 * 1024 * 1024;
+// Mirrors ALLOWED_TYPES / MAX_BYTES in the same module
 const ALLOWED_MIME = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+const MAX_BYTES = 5 * 1024 * 1024;
+// Mirrors UserCreate/LoginRequest password constraints and _normalize_phone
+const PASSWORD_MIN = 8;
+const PASSWORD_MAX = 128;
+const PHONE_MIN_DIGITS = 9;
 
 const session = { token: null, email: null };
 const uploaded = new Set();
@@ -32,10 +42,13 @@ function hideAlert(el) {
   el.className = el.className.replace(' show', '');
 }
 
-function goToStep(n) {
+function showCard(id) {
   document.querySelectorAll('.step').forEach((s) => s.classList.remove('active'));
-  $(`step${n}`).classList.add('active');
+  $(id).classList.add('active');
+}
 
+function goToStep(n) {
+  showCard(`step${n}`);
   document.querySelectorAll('#stepper .st').forEach((st) => {
     const step = Number(st.dataset.step);
     st.classList.toggle('active', step === n);
@@ -52,10 +65,10 @@ function goToStep(n) {
 async function apiFetch(url, options) {
   try {
     return await fetch(url, options);
-  } catch (e) {
+  } catch {
     throw new Error(
       "Couldn't reach the RydeChain API. If this site was just deployed, its " +
-        'address still needs to be added to the API\'s allowed origins.',
+        "address still needs to be added to the API's allowed origins.",
     );
   }
 }
@@ -64,8 +77,7 @@ async function apiFetch(url, options) {
 async function errorFrom(response, fallback) {
   let detail;
   try {
-    const body = await response.json();
-    detail = body.detail;
+    detail = (await response.json()).detail;
   } catch {
     return fallback;
   }
@@ -77,7 +89,53 @@ async function errorFrom(response, fallback) {
   return fallback;
 }
 
+const authHeader = () => ({ Authorization: `Bearer ${session.token}` });
+
+/* ---------------- Shared: enter the documents step ---------------- */
+
+/**
+ * The API already knows which documents exist, so ask rather than assume —
+ * a driver returning after a part-finished application keeps their progress.
+ */
+async function enterDocumentsStep() {
+  goToStep(2);
+  hideAlert($('status2'));
+
+  try {
+    const res = await apiFetch(`${API_BASE}/drivers/me/documents`, { headers: authHeader() });
+    if (!res.ok) return; // Non-fatal: fall back to a blank slate.
+
+    const data = await res.json();
+
+    (data.documents || []).forEach((doc) => {
+      const card = document.querySelector(`.doc[data-doc="${doc.doc_type}"]`);
+      if (!card) return;
+      const rejected = doc.status === 'rejected';
+      card.className = rejected ? 'doc failed' : 'doc filled';
+      card.querySelector('.state').textContent = rejected
+        ? `Rejected${doc.review_note ? ` — ${doc.review_note}` : ''} — upload a new one`
+        : `Uploaded — ${doc.file_name || 'on file'}`;
+      if (rejected) uploaded.delete(doc.doc_type);
+      else uploaded.add(doc.doc_type);
+    });
+    refreshDocCount();
+
+    if (data.verification_status === 'verified') {
+      showAlert($('status2'), 'Your account is already verified — you can sign in to the app.', 'ok');
+    } else if (data.verification_status === 'pending_review') {
+      showAlert($('status2'), 'Your documents are already submitted and under review.', 'ok');
+    } else if (data.verification_status === 'rejected') {
+      showAlert($('status2'), 'Some documents were rejected. Replace them and submit again.', 'err');
+    }
+  } catch {
+    /* Restoring progress is best-effort; uploading still works. */
+  }
+}
+
 /* ---------------- Step 1: create the account ---------------- */
+
+$('toSignIn').addEventListener('click', () => showCard('step1b'));
+$('toCreate').addEventListener('click', () => showCard('step1'));
 
 $('accountForm').addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -94,8 +152,15 @@ $('accountForm').addEventListener('submit', async (event) => {
     showAlert(err, 'Please fill in your name, email and password.');
     return;
   }
-  if (password.length < 8) {
-    showAlert(err, 'Your password needs to be at least 8 characters.');
+  if (password.length < PASSWORD_MIN || password.length > PASSWORD_MAX) {
+    showAlert(err, `Your password must be between ${PASSWORD_MIN} and ${PASSWORD_MAX} characters.`);
+    return;
+  }
+  // The server normalises the phone and rejects anything under 9 digits, so
+  // catch it here rather than letting the whole registration 400.
+  const digits = phone.replace(/\D/g, '');
+  if (phone && digits.length < PHONE_MIN_DIGITS) {
+    showAlert(err, `Enter a valid phone number with at least ${PHONE_MIN_DIGITS} digits.`);
     return;
   }
 
@@ -117,36 +182,71 @@ $('accountForm').addEventListener('submit', async (event) => {
       }),
     });
 
+    if (registerRes.status === 409) {
+      showAlert(
+        err,
+        'An account with this email already exists. Use "I already have an account" to sign in.',
+      );
+      return;
+    }
     if (!registerRes.ok) {
-      throw new Error(
-        await errorFrom(registerRes, 'We could not create that account. It may already exist.'),
-      );
+      throw new Error(await errorFrom(registerRes, 'We could not create that account.'));
     }
 
-    // Registration does not return a token, so sign in to get one.
-    const loginRes = await apiFetch(`${API_BASE}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-
-    if (!loginRes.ok) {
-      throw new Error(
-        await errorFrom(loginRes, 'Account created, but signing in failed. Try the app instead.'),
-      );
-    }
-
-    const tokens = await loginRes.json();
-    session.token = tokens.access_token;
-    session.email = email;
+    await signIn(email, password);
     $('doneEmail').textContent = email;
-
-    goToStep(2);
+    await enterDocumentsStep();
   } catch (e) {
     showAlert(err, e.message || 'Something went wrong. Please try again.');
   } finally {
     btn.disabled = false;
     btn.textContent = 'Create account & continue';
+  }
+});
+
+/* ---------------- Step 1b: sign in ---------------- */
+
+/** Registration returns the user, not a token, so always log in for one. */
+async function signIn(email, password) {
+  const res = await apiFetch(`${API_BASE}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  });
+  if (!res.ok) {
+    throw new Error(await errorFrom(res, 'That email and password did not match an account.'));
+  }
+  const tokens = await res.json();
+  session.token = tokens.access_token;
+  session.email = email;
+  return tokens;
+}
+
+$('signInForm').addEventListener('submit', async (event) => {
+  event.preventDefault();
+  const err = $('errSignIn');
+  hideAlert(err);
+
+  const email = $('siEmail').value.trim();
+  const password = $('siPassword').value;
+  if (!email || !password) {
+    showAlert(err, 'Enter your email and password.');
+    return;
+  }
+
+  const btn = $('signInBtn');
+  btn.disabled = true;
+  btn.textContent = 'Signing in…';
+
+  try {
+    await signIn(email, password);
+    $('doneEmail').textContent = email;
+    await enterDocumentsStep();
+  } catch (e) {
+    showAlert(err, e.message || 'Could not sign you in.');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Sign in & continue';
   }
 });
 
@@ -168,7 +268,6 @@ document.querySelectorAll('.doc').forEach((card) => {
 
     hideAlert($('err2'));
 
-    // Mirror the server's limits so people get told before a wasted upload.
     if (!ALLOWED_MIME.includes(file.type)) {
       card.className = 'doc failed';
       state.textContent = 'Use a JPG, PNG or WebP image';
@@ -193,10 +292,9 @@ document.querySelectorAll('.doc').forEach((card) => {
 
       const res = await apiFetch(`${API_BASE}/drivers/me/documents/${docType}`, {
         method: 'POST',
-        headers: { Authorization: `Bearer ${session.token}` },
+        headers: authHeader(),
         body: form,
       });
-
       if (!res.ok) throw new Error(await errorFrom(res, 'Upload failed. Please try again.'));
 
       card.className = 'doc filled';
@@ -225,9 +323,8 @@ $('submitDocsBtn').addEventListener('click', async () => {
   try {
     const res = await apiFetch(`${API_BASE}/drivers/me/documents/submit`, {
       method: 'POST',
-      headers: { Authorization: `Bearer ${session.token}` },
+      headers: authHeader(),
     });
-
     if (!res.ok) throw new Error(await errorFrom(res, 'Could not submit your application.'));
 
     goToStep(3);
