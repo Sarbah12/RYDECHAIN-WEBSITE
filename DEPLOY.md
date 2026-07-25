@@ -87,10 +87,10 @@ Upload all files (except `.git`, `.DS_Store`) to any static host (S3 + CloudFron
 | Payments | https://app.arcaccra.com/payments |
 | Roadmap | https://app.arcaccra.com/roadmap |
 | Download | https://app.arcaccra.com/download |
-| Privacy policy | Railway `/static/legal/privacy.html` |
-| Terms | Railway `/static/legal/policies.html` |
+| Privacy policy | https://api.arcaccra.com/static/legal/privacy.html |
+| Terms | https://api.arcaccra.com/static/legal/policies.html |
 | Contact | admin@arcaccra.org |
-| API (driver form) | https://rydechain-production.up.railway.app/api/v1 |
+| API (driver form) | https://api.arcaccra.com/api/v1 |
 
 ---
 

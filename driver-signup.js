@@ -17,7 +17,7 @@
  */
 
 const API_BASE =
-  window.RYDECHAIN_API_URL || 'https://rydechain-production.up.railway.app/api/v1';
+  window.RYDECHAIN_API_URL || 'https://api.arcaccra.com/api/v1';
 
 // Mirrors REQUIRED_TYPES in backend/app/services/driver_document_service.py
 const REQUIRED_DOCS = ['profile', 'license', 'registration', 'insurance', 'background'];

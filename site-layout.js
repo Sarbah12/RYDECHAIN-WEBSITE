@@ -119,8 +119,8 @@
       <div>
         <h4>Legal</h4>
         <ul class="foot-links">
-          <li><a href="https://rydechain-production.up.railway.app/static/legal/privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></li>
-          <li><a href="https://rydechain-production.up.railway.app/static/legal/policies.html" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></li>
+          <li><a href="https://api.arcaccra.com/static/legal/privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></li>
+          <li><a href="https://api.arcaccra.com/static/legal/policies.html" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></li>
         </ul>
       </div>
     </div>
