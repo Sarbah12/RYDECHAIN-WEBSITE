@@ -14,9 +14,24 @@ Then open <http://localhost:4567>.
 
 ## Files
 
+## Layout
+
+Single page, in section order:
+
+1. **Header** — split nav with the wordmark centred
+2. **Hero** — two-tone headline, phone mockup with floating glass cards, avatar stack
+3. **Purple slab** — two highlight blocks, overlapping into the section below
+4. **Stats** — trip-history card with floating accents, three numbered claims
+5. **Features** — two-tone heading, icon list, floating cards
+6. **How it works** — four numbered steps
+7. **Driver CTA** — tilted phone on a gradient panel
+8. **Testimonial** — gradient portrait block with Trustpilot chip
+9. **Roadmap** — three cards
+10. **Newsletter + footer**
+
 | File | Purpose |
 |------|---------|
-| `index.html` | The whole page — hero, features, how it works, drivers, payments, roadmap, footer |
+| `index.html` | The whole page — all sections above |
 | `styles.css` | Brand tokens and all layout/responsive rules |
 | `script.js` | Mobile nav toggle and scroll-reveal animations |
 | `assets/logo.png` | White "R" mark on brand purple (cropped to the glyph) |

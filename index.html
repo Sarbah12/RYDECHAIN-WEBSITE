@@ -15,77 +15,201 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header>
   <div class="wrap nav">
-    <a href="#" class="brand">
-      <img src="assets/logo.png" alt="RydeChain logo" />
-      <span class="brand-text">RydeChain</span>
-    </a>
-    <nav class="nav-links" id="navLinks">
+    <nav class="nav-side">
       <a href="#features">Features</a>
       <a href="#how">How it works</a>
-      <a href="#drivers">For drivers</a>
-      <a href="#payments">Payments</a>
-      <a href="#roadmap">Roadmap</a>
+      <a href="#about">About us</a>
     </nav>
-    <div class="nav-cta">
-      <a href="#drivers" class="btn btn-ghost">Drive with us</a>
-      <a href="#download" class="btn btn-primary">Get the app</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
+
+    <a href="#" class="brand">
+      <img src="assets/logo.png" alt="RydeChain logo" />
+      <span class="brand-text">Ryde<span class="brand-alt">Chain</span></span>
+    </a>
+
+    <nav class="nav-side right">
+      <a href="#drivers">Drivers</a>
+      <a href="#payments">Payments</a>
+      <a href="#blog">Blog</a>
+      <span class="avatar-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#drivers">Drivers</a>
+    <a href="#payments">Payments</a>
+    <a href="#blog">Blog</a>
+    <a href="#download">Get the app</a>
   </div>
 </header>
 
 <!-- ===== Hero ===== -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="pill"><span class="dot"></span> Live in Accra, Ghana</span>
-      <h1>Ride now. Pay direct.<br />Settled on Cardano.</h1>
-      <p class="lead">
-        RydeChain connects drivers and passengers directly. Your fare goes from your
-        wallet straight to the driver's — verified on-chain before the trip starts.
-        No intermediary holds the money, and cash is always welcome.
-      </p>
-      <div class="hero-actions">
-        <a href="#download" class="btn btn-primary">Download the app</a>
-        <a href="#how" class="btn btn-ghost">See how it works</a>
+  <div class="wrap hero-inner">
+
+    <div class="rail" aria-hidden="true">
+      <span>Ride · Pay · Go</span>
+      <i><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/></svg></i>
+      <i><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/></svg></i>
+    </div>
+
+    <div class="hero-grid">
+      <div>
+        <h1>Ride Now.<br /><span class="accent">Pay Direct.</span></h1>
+        <p class="lead">
+          Your fare goes from your wallet straight to the driver's — verified
+          on-chain before the trip starts. No intermediary holds the money,
+          and cash is always welcome.
+        </p>
+        <div class="hero-actions">
+          <a href="#download" class="btn btn-primary">Get the app</a>
+          <a href="#how" class="btn btn-ghost">How it works</a>
+        </div>
       </div>
-      <div class="hero-facts">
-        <div class="fact"><strong>0%</strong><span>platform float on fares</span></div>
-        <div class="fact"><strong>3 tiers</strong><span>Go · Comfort · XL</span></div>
-        <div class="fact"><strong>ADA + cash</strong><span>pay how you like</span></div>
+
+      <div class="hero-visual">
+        <div class="float f-left reveal">
+          <h5>Fare locked upfront</h5>
+          <p>Confirmed before you set off — it can't change mid-ride.</p>
+        </div>
+
+        <div class="rating-chip float f-trust">
+          <span class="star">★</span> Trustpilot <b>4.8</b> <span class="star">★</span>
+        </div>
+
+        <div class="float f-overview">
+          <h5>Trip Overview</h5>
+          <p>Osu → Madina · 3 stops. Driver arriving in 2 minutes.</p>
+        </div>
+
+        <div class="float f-tasks">
+          <div class="hd"><b>Nearby drivers</b><span>+ Live</span></div>
+          <div class="li"><i></i> Kwame A. — Ryde Go · 2 min · ₳12.40</div>
+          <div class="li"><i></i> Ama B. — Comfort · 4 min · ₳17.10</div>
+          <div class="li"><i></i> Yaw M. — Ryde XL · 6 min · ₳23.60</div>
+        </div>
+
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="phone-top">
+              <span class="brand"><img src="assets/logo.png" alt="" /> RydeChain</span>
+              <span class="bars"><i></i><i></i><i></i></span>
+            </div>
+            <div class="phone-hello">
+              <small>Hello,</small>
+              <b>Kwabena Mensah 👋</b>
+            </div>
+            <div class="phone-card">
+              <span class="tag">◆ Ryde Go</span>
+              <b>Osu → Madina<br />₳ 12.40 · GHS 78</b>
+              <div class="go">Confirm ride</div>
+            </div>
+            <div class="phone-list">
+              <div class="phone-row">
+                <span class="ic">🚗</span>
+                <span class="tx"><b>Driver on the way</b><small>Toyota Vitz · GR 4821-22</small></span>
+                <span class="pct">2 min</span>
+              </div>
+              <div class="phone-row">
+                <span class="ic">⛓</span>
+                <span class="tx"><b>Payment verified</b><small>On-chain · Cardano</small></span>
+                <span class="pct">✓</span>
+              </div>
+              <div class="phone-row">
+                <span class="ic">★</span>
+                <span class="tx"><b>Driver rating</b><small>412 completed trips</small></span>
+                <span class="pct">4.9</span>
+              </div>
+            </div>
+            <div class="phone-nav">
+              <i></i><i></i><i class="mid"></i><i></i><i></i>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="phone-stage">
-      <div class="phone">
-        <div class="phone-screen">
-          <div class="phone-map">
-            <div class="route-line"></div>
-            <div class="car-chip">Driver 2 min away</div>
-          </div>
-          <div class="phone-body">
-            <div class="fare-row">
-              <span class="ada">₳ 12.40</span>
-              <span class="ghs">≈ GHS 78.00</span>
-            </div>
-            <span class="verified">
-              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              Payment verified on-chain
-            </span>
-            <div class="tier active"><b>Ryde Go</b><span>₳ 12.40</span></div>
-            <div class="tier"><b>Comfort</b><span>₳ 17.10</span></div>
-            <div class="tier"><b>Ryde XL</b><span>₳ 23.60</span></div>
-            <div class="phone-cta">Confirm ride</div>
-          </div>
+    <div class="hero-social">
+      <div class="avatars">
+        <i class="a1"></i><i class="a2"></i><i class="a3"></i><i class="a4"></i><i class="a5"></i>
+        <span class="more">5M+</span>
+      </div>
+      <p>Trusted by riders and drivers across <b>Accra, Ghana</b> 🇬🇭</p>
+    </div>
+
+    <div class="slab reveal">
+      <div class="slab-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <h3>Direct wallet-to-wallet</h3>
+        <p>ADA moves from the passenger's Cardano wallet to the driver's and is verified on-chain before the trip begins. The platform never holds keys or funds.</p>
+      </div>
+      <div class="slab-item">
+        <div class="ic">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3>Driver-published trips</h3>
+        <p>Drivers aren't just order-takers. They publish their own routes, stops, schedules, seat counts and their own price in ADA per seat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Stats ===== -->
+<section class="stats" id="about">
+  <div class="wrap stats-grid">
+    <div class="stats-visual reveal">
+      <div class="blob-card">
+        <div class="badge-float">
+          <svg viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9z"/></svg>
+        </div>
+        <div class="tasklist">
+          <div class="hd"><b>Trip history</b><span>+ Export</span></div>
+          <div class="li done"><i></i> Osu → Madina · ₳12.40 · verified on-chain</div>
+          <div class="li done"><i></i> Airport → East Legon · ₳21.80 · verified</div>
+          <div class="li"><i></i> Circle → Achimota · cash on arrival</div>
+        </div>
+        <div class="bars-float"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="avatars-float">
+          <div class="avatars"><i class="a2"></i><i class="a4"></i><i class="a1"></i><span class="more">+9</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="stat-row reveal">
+        <div class="num">0%<small>platform float on fares</small></div>
+        <div>
+          <h3>The money never stops here</h3>
+          <p>Most platforms sit between you and your driver, holding funds on the way through. RydeChain removes the middle entirely.</p>
+        </div>
+      </div>
+      <div class="stat-row reveal">
+        <div class="num">3 tiers<small>Go · Comfort · XL</small></div>
+        <div>
+          <h3>Upfront fares, every time</h3>
+          <p>Compare tiers before you book. The fare is shown in ADA with its GHS equivalent and confirmed before departure — no surge surprises.</p>
+        </div>
+      </div>
+      <div class="stat-row reveal">
+        <div class="num">Minutes<small>to on-chain settlement</small></div>
+        <div>
+          <h3>Drivers paid without delay</h3>
+          <p>Cardano's low fees keep payment overhead to a fraction of card processing, and drivers receive the fare directly — no payout queue.</p>
         </div>
       </div>
     </div>
@@ -93,243 +217,214 @@
 </section>
 
 <!-- ===== Features ===== -->
-<section id="features" class="alt">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Why RydeChain</span>
-      <h2>Built so the money goes where it's earned</h2>
-      <p>Most ride platforms sit between you and your driver, holding funds and taking a cut on the way through. RydeChain removes the middle.</p>
+<section id="features">
+  <div class="wrap feat-grid">
+    <div class="reveal">
+      <h2>Comprehensive <span class="accent">Feature Set</span><br />of a Ride You Control</h2>
+      <div class="feat-list">
+        <div class="feat-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></div>
+          <div>
+            <h3>Pay in ADA or cash</h3>
+            <p>Choose your method trip by trip. Cash on arrival is fully supported — no wallet required to ride.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+          <div>
+            <h3>On-chain verification</h3>
+            <p>The platform confirms the exact amount reached the driver's address before the trip begins.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.7 17 14.6 18.2 21.5 12 18.2 5.8 21.5 7 14.6 2 9.7 8.9 8.6 12 2"/></svg></div>
+          <div>
+            <h3>Reputation you can check</h3>
+            <p>Ratings on completed trips, with records anchored to verifiable on-chain payment transactions.</p>
+          </div>
+        </div>
+        <div class="feat-item">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
+          <div>
+            <h3>Built for Accra</h3>
+            <p>Fares in ADA with GHS equivalents, cash alongside crypto, and weather-aware pricing tuned to local conditions.</p>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <div class="grid-3">
-      <div class="card reveal">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"></path><polyline points="9 12 11 14 15 10"></polyline></svg>
+    <div class="feat-visual reveal">
+      <div class="fc fc-1">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg></span>
+        <div>
+          <h5>Ride completed</h5>
+          <span class="meta">₳12.40 settled · 2 min ago</span>
         </div>
-        <h3>Direct wallet-to-wallet</h3>
-        <p>ADA moves from the passenger's Cardano wallet to the driver's and is verified on-chain before the trip begins. The platform never holds keys or funds.</p>
       </div>
-
-      <div class="card reveal">
-        <div class="icon-badge yellow">
-          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
-        </div>
-        <h3>Transparent pricing</h3>
-        <p>The fare is shown upfront and confirmed before you set off. No hidden fees, no surge surprises, no price that changes once you're moving.</p>
+      <span class="fc-tag">Smart dispatch</span>
+      <div class="fc fc-2">
+        <h5>Trip Overview</h5>
+        <p>Drivers set routes, stops, schedules and seat counts — riders book the seats that fit their day.</p>
       </div>
-
-      <div class="card reveal">
-        <div class="icon-badge green">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        </div>
-        <h3>Fast, low-cost settlement</h3>
-        <p>Cardano's low fees keep payment overhead to a fraction of card processing, and settlement confirms in minutes — no payout delays for drivers.</p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-        </div>
-        <h3>Driver autonomy</h3>
-        <p>Drivers aren't just order-takers. They publish their own trips with custom routes, stops, schedules, seat counts and their own ADA pricing.</p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.1 8.6 22 9.7 17 14.6 18.2 21.5 12 18.2 5.8 21.5 7 14.6 2 9.7 8.9 8.6 12 2"></polygon></svg>
-        </div>
-        <h3>Reputation you can verify</h3>
-        <p>Drivers and passengers build reputation through ratings on completed trips, with records anchored to verifiable on-chain payment transactions.</p>
-      </div>
-
-      <div class="card reveal">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-        </div>
-        <h3>Tailored to Africa</h3>
-        <p>Fares in ADA with GHS equivalents, cash supported alongside crypto, and weather-aware pricing tuned to local conditions. Starting with Accra.</p>
+      <div class="fc fc-3">
+        <small>Paid directly to drivers</small>
+        <b>₳ 64,520.00</b>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== How it works ===== -->
-<section id="how">
+<section id="how" class="blog">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">How it works</span>
-      <h2>Four steps, no middleman</h2>
+      <h2>Four steps, <span class="accent">no middleman</span></h2>
       <p>From request to settlement, every stage is visible to both sides of the trip.</p>
     </div>
-
-    <div class="steps">
-      <div class="step reveal">
+    <div class="blog-grid" style="grid-template-columns:repeat(4,1fr);">
+      <div class="post reveal"><div class="thumb">01</div><div class="body">
         <h3>Request or browse</h3>
-        <p>Request a ride on demand with an upfront estimate, or browse driver-published trips that fit your schedule and budget.</p>
-      </div>
-      <div class="step reveal">
+        <p class="date">Request a ride on demand with an upfront estimate, or browse driver-published trips.</p>
+      </div></div>
+      <div class="post reveal"><div class="thumb">02</div><div class="body">
         <h3>Get matched</h3>
-        <p>Smart dispatch matches you to nearby drivers in progressive waves, prioritising proximity and availability.</p>
-      </div>
-      <div class="step reveal">
+        <p class="date">Smart dispatch matches you to nearby drivers in waves, prioritising proximity.</p>
+      </div></div>
+      <div class="post reveal"><div class="thumb">03</div><div class="body">
         <h3>Confirm the fare</h3>
-        <p>You see the exact fare in ADA with its GHS equivalent and confirm it before the trip starts — it cannot change mid-ride.</p>
-      </div>
-      <div class="step reveal">
+        <p class="date">See the exact fare in ADA and GHS, and confirm it before the trip starts.</p>
+      </div></div>
+      <div class="post reveal"><div class="thumb">04</div><div class="body">
         <h3>Pay direct</h3>
-        <p>Pay in ADA from your own wallet — confirmed on-chain to the driver's address — or settle in cash on arrival.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Drivers ===== -->
-<section id="drivers" class="alt">
-  <div class="wrap split">
-    <div class="reveal">
-      <span class="eyebrow">For drivers</span>
-      <h2>Run your day, your route, your price</h2>
-      <p style="color:var(--muted); font-size:1.05rem;">
-        Drivers have full control over their trips. Beyond accepting on-demand
-        requests, you can publish your own — and keep the full fare your rider pays.
-      </p>
-      <ul class="checklist">
-        <li>
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span><b>Set your routes.</b> Choose starting points, intermediate stops and destinations.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span><b>Set your price.</b> Publish trips at your own rate in ADA per seat.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span><b>Set your schedule.</b> Pick trip times and seat availability to match your day.</span>
-        </li>
-        <li>
-          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          <span><b>Get paid immediately.</b> Fares land in your wallet directly — no platform float, no payout delay.</span>
-        </li>
-      </ul>
-      <div style="margin-top:28px;">
-        <a href="#download" class="btn btn-primary">Start driving</a>
-      </div>
-    </div>
-
-    <div class="reveal">
-      <div class="card">
-        <h3 style="margin-bottom:18px;">Publish a trip</h3>
-        <div class="tier"><b>Route</b><span>Osu → Madina</span></div>
-        <div class="tier"><b>Stops</b><span>37 Station, Legon</span></div>
-        <div class="tier"><b>Departs</b><span>Today, 17:30</span></div>
-        <div class="tier"><b>Seats</b><span>3 available</span></div>
-        <div class="tier active"><b>Price per seat</b><span>₳ 9.50 · GHS 60</span></div>
-        <div class="phone-cta" style="margin-top:14px;">Publish trip</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Payments ===== -->
-<section id="payments">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Payments</span>
-      <h2>Pay the way that works for you</h2>
-      <p>Riders choose their payment method trip by trip — essential in a market where that flexibility matters.</p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card pay-card reveal">
-        <div class="icon-badge">
-          <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"></rect><path d="M2 10h20"></path></svg>
-        </div>
-        <h3>ADA on Cardano</h3>
-        <p>Straight from your wallet to the driver's, verified on-chain before departure. Link your wallet with an optional DID reference — private keys are never stored.</p>
-      </div>
-
-      <div class="card pay-card reveal">
-        <div class="icon-badge green">
-          <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"></rect><circle cx="12" cy="12" r="3"></circle></svg>
-        </div>
-        <h3>Cash on arrival</h3>
-        <p>Fully supported, first-class. Choose cash at booking and settle with the driver when you arrive — no wallet required to ride.</p>
-      </div>
-
-      <div class="card pay-card reveal">
-        <div class="icon-badge yellow">
-          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="3"></rect><line x1="12" y1="18" x2="12" y2="18"></line></svg>
-        </div>
-        <h3>Mobile money <span class="badge-soon">Planned</span></h3>
-        <p>MoMo integration is on the roadmap as an additional settlement rail, to meet riders where they already pay.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Roadmap ===== -->
-<section id="roadmap" class="alt">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Roadmap</span>
-      <h2>Where RydeChain is heading</h2>
-      <p>Direct transfer works today. Next comes trustless settlement and portable, verifiable trust.</p>
-    </div>
-
-    <div class="roadmap">
-      <div class="road-item reveal">
-        <div class="road-dot">1</div>
-        <div>
-          <h3>Smart-contract escrow</h3>
-          <p>Funds locked at booking and released automatically on trip completion, replacing direct transfer with fully trustless settlement.</p>
-        </div>
-      </div>
-      <div class="road-item reveal">
-        <div class="road-dot">2</div>
-        <div>
-          <h3>On-chain reputation</h3>
-          <p>Immutable trust scores anchored to Cardano, so a driver's track record is portable and independently verifiable.</p>
-        </div>
-      </div>
-      <div class="road-item reveal">
-        <div class="road-dot">3</div>
-        <div>
-          <h3>Full DID verification</h3>
-          <p>Privacy-preserving identity checks for both drivers and riders, without centralised document storage.</p>
-        </div>
-      </div>
-      <div class="road-item reveal">
-        <div class="road-dot">4</div>
-        <div>
-          <h3>Mobile money settlement</h3>
-          <p>MoMo added as a first-class rail alongside ADA and cash, matching how Ghana already moves money.</p>
-        </div>
-      </div>
+        <p class="date">Pay in ADA from your wallet, confirmed on-chain — or settle in cash on arrival.</p>
+      </div></div>
     </div>
   </div>
 </section>
 
 <!-- ===== CTA ===== -->
-<section id="download">
+<section class="cta-wrap" id="drivers">
   <div class="wrap">
     <div class="cta reveal">
-      <h2>Ready to ride?</h2>
-      <p>Join riders and drivers in Accra moving on a platform that never touches their money.</p>
-      <div class="cta-actions">
-        <a href="#" class="btn btn-light">Get it on Google Play</a>
-        <a href="#drivers" class="btn btn-outline-light">Sign up to drive</a>
+      <div class="cta-phone">
+        <div class="phone">
+          <div class="phone-inner">
+            <div class="phone-top">
+              <span class="brand"><img src="assets/logo.png" alt="" /> RydeChain</span>
+              <span class="bars"><i></i><i></i><i></i></span>
+            </div>
+            <div class="phone-hello"><small>Publish a trip</small><b>Osu → Madina</b></div>
+            <div class="phone-list">
+              <div class="phone-row"><span class="tx"><b>Stops</b></span><span class="pct" style="color:var(--muted)">37 Station</span></div>
+              <div class="phone-row"><span class="tx"><b>Departs</b></span><span class="pct" style="color:var(--muted)">17:30</span></div>
+              <div class="phone-row"><span class="tx"><b>Seats</b></span><span class="pct" style="color:var(--muted)">3 free</span></div>
+              <div class="phone-row"><span class="tx"><b>Price / seat</b></span><span class="pct">₳ 9.50</span></div>
+            </div>
+            <div class="phone-card" style="margin-bottom:14px;">
+              <b style="text-align:center;">Publish trip</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cta-body">
+        <h2>Ready? Start driving with <span style="color:var(--yellow)">RydeChain</span></h2>
+        <p>
+          Set your own routes, stops, schedules and price per seat in ADA. Fares
+          land in your wallet directly — no platform float, no payout delay.
+        </p>
+        <a href="#download" class="btn btn-white">Start driving</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Testimonial ===== -->
+<section id="payments">
+  <div class="wrap tm-grid">
+    <div class="tm-visual reveal">
+      <div class="tm-photo"><span class="person">🙌</span></div>
+      <div class="rating-chip tm-chip"><span class="star">★</span> Trustpilot <b>4.8</b></div>
+      <div class="tm-star">★</div>
+      <div class="tm-list"><i></i><i></i><i></i></div>
+    </div>
+    <div class="tm-body reveal">
+      <div class="quote-mark">&rdquo;</div>
+      <blockquote>
+        I pay straight from my own wallet and see it confirmed on-chain before we
+        move. No account top-ups, no waiting for the platform to release anything —
+        and when I'd rather pay cash, that just works too.
+      </blockquote>
+      <div class="tm-author">
+        <b>Alen Walker</b>
+        <small>Daily commuter, Accra</small>
+      </div>
+      <div class="tm-foot"><span class="star" style="color:var(--success)">★</span> Trustpilot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Blog ===== -->
+<section class="blog" id="blog">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Roadmap</span>
+      <h2>Where RydeChain is <span class="accent">heading</span></h2>
+      <p>Direct transfer works today. Next comes trustless settlement and portable, verifiable trust.</p>
+    </div>
+    <div class="blog-grid">
+      <div class="post reveal">
+        <div class="thumb">Smart-contract escrow</div>
+        <div class="body">
+          <div class="meta">Next <span>· Cardano</span></div>
+          <h3>Funds locked at booking, released on completion</h3>
+          <p class="date">Replaces direct transfer with fully trustless settlement.</p>
+        </div>
+      </div>
+      <div class="post reveal">
+        <div class="thumb">On-chain reputation</div>
+        <div class="body">
+          <div class="meta">Planned <span>· Trust</span></div>
+          <h3>Immutable trust scores anchored to Cardano</h3>
+          <p class="date">A driver's track record becomes portable and independently verifiable.</p>
+        </div>
+      </div>
+      <div class="post reveal">
+        <div class="thumb">DID + Mobile money</div>
+        <div class="body">
+          <div class="meta">Planned <span>· Access</span></div>
+          <h3>Privacy-preserving identity, plus MoMo</h3>
+          <p class="date">Identity checks without centralised document storage, and MoMo as a settlement rail.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ===== Footer ===== -->
-<footer>
+<footer id="download">
   <div class="wrap">
+    <div class="news reveal">
+      <div>
+        <h3>Get RydeChain on your phone</h3>
+        <p>Join riders and drivers in Accra moving on a platform that never touches their money.</p>
+      </div>
+      <form class="news-form" onsubmit="return false;">
+        <input type="email" placeholder="Enter your email…" aria-label="Email address" />
+        <button class="btn btn-white" type="submit">Notify me</button>
+      </form>
+    </div>
+
     <div class="foot-grid">
       <div class="foot-brand">
-        <a href="#" class="brand"><img src="assets/logo.png" alt="" /> <span>RydeChain</span></a>
+        <a href="#" class="brand"><img src="assets/logo.png" alt="" /> <span>Ryde<span class="brand-alt">Chain</span></span></a>
         <p>Ride-sharing built on Cardano, connecting drivers and passengers directly. Built for Accra, Ghana.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M13 22v-9h3l.5-4H13V6.5c0-1.1.3-1.9 2-1.9h2V1.1C16.7 1.1 15.5 1 14.1 1 11.2 1 9 2.8 9 6.1V9H6v4h3v9h4z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2h3.4l-7.4 8.5L23 22h-6.8l-5.3-7-6.1 7H1.4l7.9-9.1L1 2h7l4.8 6.4L18.2 2zm-1.2 18h1.9L7.1 4H5.1l11.9 16z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.2-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.9s0-3.6.1-4.9C2.3 4 3.9 2.4 7.1 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 5.6a4.2 4.2 0 1 0 0 8.4 4.2 4.2 0 0 0 0-8.4zm0 6.9a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.4-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.75-1.95C20.4 8.75 21 11 21 14v7h-4v-6.2c0-1.5 0-3.4-2.1-3.4s-2.4 1.6-2.4 3.3V21H9z"/></svg></a>
+        </div>
       </div>
       <div>
         <h4>Product</h4>
@@ -337,14 +432,14 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#how">How it works</a></li>
           <li><a href="#payments">Payments</a></li>
-          <li><a href="#roadmap">Roadmap</a></li>
+          <li><a href="#blog">Roadmap</a></li>
         </ul>
       </div>
       <div>
         <h4>Company</h4>
         <ul class="foot-links">
           <li><a href="#drivers">Drive with us</a></li>
-          <li><a href="#download">Get the app</a></li>
+          <li><a href="#about">About us</a></li>
           <li><a href="#">Contact</a></li>
         </ul>
       </div>
@@ -352,10 +447,11 @@
         <h4>Legal</h4>
         <ul class="foot-links">
           <li><a href="#">Privacy policy</a></li>
-          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Terms &amp; conditions</a></li>
         </ul>
       </div>
     </div>
+
     <div class="foot-bottom">
       <span>© 2026 RydeChain. All rights reserved.</span>
       <span>Payments settle on the Cardano blockchain.</span>
