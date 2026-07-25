@@ -22,7 +22,8 @@ const API_BASE =
 // Mirrors REQUIRED_TYPES in backend/app/services/driver_document_service.py
 const REQUIRED_DOCS = ['profile', 'license', 'registration', 'insurance', 'background'];
 // Mirrors ALLOWED_TYPES / MAX_BYTES in the same module
-const ALLOWED_MIME = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+const IMAGE_MIME = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+const ALLOWED_MIME = [...IMAGE_MIME, 'application/pdf'];
 const MAX_BYTES = 5 * 1024 * 1024;
 // Mirrors UserCreate/LoginRequest password constraints and _normalize_phone
 const PASSWORD_MIN = 8;
@@ -270,7 +271,16 @@ document.querySelectorAll('.doc').forEach((card) => {
 
     if (!ALLOWED_MIME.includes(file.type)) {
       card.className = 'doc failed';
-      state.textContent = 'Use a JPG, PNG or WebP image';
+      state.textContent = docType === 'profile'
+        ? 'Use a JPG, PNG or WebP image'
+        : 'Use a JPG, PNG, WebP image or PDF';
+      uploaded.delete(docType);
+      refreshDocCount();
+      return;
+    }
+    if (docType === 'profile' && !IMAGE_MIME.includes(file.type)) {
+      card.className = 'doc failed';
+      state.textContent = 'Profile photo must be a JPG, PNG or WebP image';
       uploaded.delete(docType);
       refreshDocCount();
       return;
