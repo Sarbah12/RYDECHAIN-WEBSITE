@@ -29,9 +29,44 @@ Single page, in section order:
 9. **Roadmap** — three cards
 10. **Newsletter + footer**
 
+## Driver registration
+
+`driver-signup.html` is a working three-step registration flow that talks to the
+real RydeChain API — it is not a mock form.
+
+1. **Account** → `POST /auth/register` with `role: "driver"`, then
+   `POST /auth/login` to get an access token
+2. **Documents** → `POST /drivers/me/documents/{type}` (multipart), one call per
+   file, uploaded as soon as it's picked
+3. **Submit** → `POST /drivers/me/documents/submit`
+
+All five document types are required, matching `REQUIRED_TYPES` in
+`backend/app/services/driver_document_service.py`: `profile`, `license`,
+`registration`, `insurance`, `background`. Files must be JPG, PNG or WebP and
+under 5 MB — the page enforces both client-side so people aren't left waiting on
+an upload the server will reject.
+
+The access token is held in memory only, never `localStorage`.
+
+### ⚠️ Required before this works in production
+
+The API only accepts requests from an origin allowlist. **The deployed site's
+domain must be added to `BACKEND_CORS_ORIGINS` on Railway**, or every request
+fails with "Couldn't reach the RydeChain API". `http://localhost:4567` has been
+added to the `always_allow` list in `backend/app/main.py` for local development,
+but that change still needs deploying.
+
+To point the page at a different API:
+
+```html
+<script>window.RYDECHAIN_API_URL = 'http://localhost:8000/api/v1';</script>
+```
+
 | File | Purpose |
 |------|---------|
 | `index.html` | The whole page — all sections above |
+| `driver-signup.html` | Driver registration + document upload |
+| `driver-signup.js` | Registration flow logic |
 | `styles.css` | Brand tokens and all layout/responsive rules |
 | `script.js` | Mobile nav toggle and scroll-reveal animations |
 | `assets/logo.png` | White "R" mark on brand purple |

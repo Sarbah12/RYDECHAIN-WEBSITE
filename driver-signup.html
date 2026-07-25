@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Drive with RydeChain — Driver registration</title>
+<meta name="description" content="Register as a RydeChain driver in Accra. Create your account, upload your licence, vehicle registration, insurance and background check, and get verified." />
+<meta name="theme-color" content="#7b00ff" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="assets/favicon.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <nav class="nav-side">
+      <a href="index.html#features">Features</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#about">About us</a>
+    </nav>
+
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="RydeChain logo" />
+      <span class="brand-text">Ryde<span class="brand-alt">Chain</span></span>
+    </a>
+
+    <nav class="nav-side right">
+      <a href="index.html#payments">Payments</a>
+      <a href="index.html#screens">The app</a>
+      <a href="index.html#blog">Roadmap</a>
+      <span class="avatar-btn" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </span>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="index.html#features">Features</a>
+    <a href="index.html#how">How it works</a>
+    <a href="index.html#payments">Payments</a>
+    <a href="index.html#screens">The app</a>
+    <a href="index.html">Back to home</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Drive with RydeChain</span>
+    <h1>Become a <span class="accent">RydeChain driver</span></h1>
+    <p>
+      Set your own routes, schedules and price per seat in ADA. Fares land in
+      your wallet directly. Create your account, upload your documents, and
+      we'll review your application.
+    </p>
+  </div>
+</section>
+
+<section style="padding-top:0;">
+  <div class="wrap">
+
+    <div class="stepper" id="stepper">
+      <div class="st active" data-step="1"><span class="dot">1</span><span>Your details</span></div>
+      <div class="bar"></div>
+      <div class="st" data-step="2"><span class="dot">2</span><span>Documents</span></div>
+      <div class="bar"></div>
+      <div class="st" data-step="3"><span class="dot">3</span><span>Review</span></div>
+    </div>
+
+    <!-- ---------- Step 1: account ---------- -->
+    <div class="form-card step active" id="step1">
+      <h2>Create your driver account</h2>
+      <p class="sub">This creates your RydeChain account with the driver role.</p>
+
+      <div class="alert err" id="err1" role="alert"></div>
+
+      <form id="accountForm" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="firstName">First name</label>
+            <input id="firstName" name="firstName" type="text" autocomplete="given-name" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last name</label>
+            <input id="lastName" name="lastName" type="text" autocomplete="family-name" required />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" placeholder="+233…" required />
+          <div class="hint">Riders use this to reach you about a trip.</div>
+        </div>
+
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" name="password" type="password" autocomplete="new-password" minlength="8" required />
+          <div class="hint">At least 8 characters.</div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" id="createBtn">Create account &amp; continue</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- ---------- Step 2: documents ---------- -->
+    <div class="form-card step" id="step2">
+      <h2>Upload your documents</h2>
+      <p class="sub">
+        All five are required before we can review your application.
+        JPG, PNG or WebP — up to 5&nbsp;MB each. Each file uploads as soon as you pick it.
+      </p>
+
+      <div class="alert err" id="err2" role="alert"></div>
+      <div class="alert info show" id="info2">
+        Tap a card to choose a file. Take the photo in good light and make sure
+        every corner of the document is visible.
+      </div>
+
+      <div class="docs-grid" id="docsGrid">
+        <label class="doc" data-doc="profile">
+          <input type="file" accept="image/jpeg,image/png,image/webp" />
+          <span class="top">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span>
+            <span><b>Profile photo</b><small>A clear photo of your face</small></span>
+          </span>
+          <span class="state">Not uploaded</span>
+        </label>
+
+        <label class="doc" data-doc="license">
+          <input type="file" accept="image/jpeg,image/png,image/webp" />
+          <span class="top">
+            <span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg></span>
+            <span><b>Driver's licence</b><small>Front of your valid licence</small></span>
+          </span>
+          <span class="state">Not uploaded</span>
+        </label>
+
+        <label class="doc" data-doc="registration">
+          <input type="file" accept="image/jpeg,image/png,image/webp" />
+          <span class="top">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></span>
+            <span><b>Vehicle registration</b><small>Registration document for your car</small></span>
+          </span>
+          <span class="state">Not uploaded</span>
+        </label>
+
+        <label class="doc" data-doc="insurance">
+          <input type="file" accept="image/jpeg,image/png,image/webp" />
+          <span class="top">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M12 2 4 6v6c0 5 3.4 9.3 8 10 4.6-.7 8-5 8-10V6z"/></svg></span>
+            <span><b>Insurance certificate</b><small>Current, in-date cover</small></span>
+          </span>
+          <span class="state">Not uploaded</span>
+        </label>
+
+        <label class="doc" data-doc="background">
+          <input type="file" accept="image/jpeg,image/png,image/webp" />
+          <span class="top">
+            <span class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></span>
+            <span><b>Background check</b><small>Police report or clearance</small></span>
+          </span>
+          <span class="state">Not uploaded</span>
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" id="submitDocsBtn" disabled>Submit for review</button>
+        <span class="hint" id="docCount">0 of 5 uploaded</span>
+      </div>
+    </div>
+
+    <!-- ---------- Step 3: done ---------- -->
+    <div class="form-card step" id="step3" style="text-align:center;">
+      <div class="done-mark">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Application submitted</h2>
+      <p class="sub" style="margin-bottom:24px;">
+        Your documents are with our team for review. We'll email you at
+        <b id="doneEmail"></b> once your account is approved — then you can sign in
+        to the RydeChain app and start publishing trips.
+      </p>
+      <div class="form-actions" style="justify-content:center;">
+        <a class="btn btn-primary" href="index.html">Back to home</a>
+        <a class="btn btn-ghost" href="index.html#screens">See the app</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-bottom" style="border-top:0; padding-top:0;">
+      <span>© 2026 RydeChain. All rights reserved.</span>
+      <span>Payments settle on the Cardano blockchain.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="driver-signup.js"></script>
+</body>
+</html>
