@@ -14,20 +14,26 @@ Then open <http://localhost:4567>.
 
 ## Files
 
-## Layout
+## Site structure
 
-Single page, in section order:
+Each section is its own page (clean URLs, no `.html`):
 
-1. **Header** — split nav with the wordmark centred
-2. **Hero** — two-tone headline, phone mockup with floating glass cards, avatar stack
-3. **Purple slab** — two highlight blocks, overlapping into the section below
-4. **Stats** — trip-history card with floating accents, three numbered claims
-5. **Features** — two-tone heading, icon list, floating cards
-6. **How it works** — four numbered steps
-7. **Driver CTA** — tilted phone on a gradient panel
-8. **Testimonial** — gradient portrait block with Trustpilot chip
-9. **Roadmap** — three cards
-10. **Newsletter + footer**
+| URL | Page |
+|-----|------|
+| `/` | Home — hero and highlights |
+| `/about` | About us — stats and mission |
+| `/features` | Feature list |
+| `/how-it-works` | Four-step flow |
+| `/screens` | Real app screenshots |
+| `/drivers` | Driver CTA |
+| `/driver-signup` | Driver registration (live API) |
+| `/payments` | Payments + testimonial |
+| `/roadmap` | Product roadmap |
+| `/download` | Get the app |
+
+Shared header, footer, and nav live in `site-layout.js` (set `data-page` on `<body>` for active link).
+
+## Layout (home page)
 
 ## Driver registration
 
@@ -65,13 +71,13 @@ an upload the server will reject.
 
 The access token is held in memory only, never `localStorage`.
 
-### ⚠️ Required before this works in production
+### Production URL
 
-The API only accepts requests from an origin allowlist. **The deployed site's
-domain must be added to `BACKEND_CORS_ORIGINS` on Railway**, or every request
-fails with "Couldn't reach the RydeChain API". `http://localhost:4567` has been
-added to the `always_allow` list in `backend/app/main.py` for local development,
-but that change still needs deploying.
+**https://app.arcaccra.com** — see [DEPLOY.md](./DEPLOY.md) for Vercel/Cloudflare setup and DNS.
+
+### ⚠️ Required before driver signup works in production
+
+The API only accepts requests from an origin allowlist. **`https://app.arcaccra.com`** is in the backend `always_allow` list — redeploy the Railway API after pulling the latest `RYDECHAIN` backend. For local dev, `http://localhost:4567` is also allowed.
 
 To point the page at a different API:
 
@@ -81,11 +87,13 @@ To point the page at a different API:
 
 | File | Purpose |
 |------|---------|
-| `index.html` | The whole page — all sections above |
+| `index.html` | Home page |
+| `about.html`, `features.html`, etc. | Standalone section pages |
 | `driver-signup.html` | Driver registration + document upload |
+| `site-layout.js` | Shared header, footer, and navigation |
 | `driver-signup.js` | Registration flow logic |
 | `styles.css` | Brand tokens and all layout/responsive rules |
-| `script.js` | Mobile nav toggle and scroll-reveal animations |
+| `script.js` | Scroll-reveal animations |
 | `assets/logo.png` | White "R" mark on brand purple |
 | `assets/logo-original.png` | Untouched app icon, dark-indigo R — kept for reference |
 | `assets/favicon.png`, `assets/mark.png` | Generated from `logo.png` |
@@ -141,5 +149,4 @@ reputation, DID verification, mobile money).
 ## Still to fill in
 
 - Google Play link on the "Get it on Google Play" button (currently `#`)
-- Privacy policy and terms pages (footer links are placeholders)
-- Contact destination in the footer
+- ~~Privacy policy and terms pages~~ — footer links to Railway legal pages

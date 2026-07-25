@@ -1,20 +1,4 @@
-// Mobile nav toggle
-const menuBtn = document.getElementById('menuBtn');
-const navMobile = document.getElementById('navMobile');
-
-menuBtn.addEventListener('click', () => {
-  const open = navMobile.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(open));
-});
-
-navMobile.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') {
-    navMobile.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  }
-});
-
-// Reveal on scroll
+// Mobile nav is handled by site-layout.js — scroll reveal only here.
 const revealables = document.querySelectorAll('.reveal');
 
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
@@ -22,7 +6,6 @@ if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'Intersect
     (entries) => {
       entries.forEach((entry, i) => {
         if (!entry.isIntersecting) return;
-        // Stagger siblings so grids cascade instead of popping at once.
         entry.target.style.transitionDelay = `${Math.min(i * 80, 320)}ms`;
         entry.target.classList.add('in');
         observer.unobserve(entry.target);
