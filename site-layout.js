@@ -65,9 +65,6 @@
 
     <nav class="nav-side right">
       ${NAV_RIGHT.map((item) => navLink(item, active)).join('\n      ')}
-      <span class="avatar-btn" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </span>
     </nav>
 
     <button class="menu-btn" id="menuBtn" aria-label="Toggle menu" aria-expanded="false">
