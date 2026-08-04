@@ -468,6 +468,32 @@ footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; 
   100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
 }
 
+/* ---------- Pilot survey feedback ---------- */
+.fb-sec { background: var(--panel); }
+.fb-head { max-width: 640px; margin: 0 auto 44px; text-align: center; }
+.fb-head h2 { font-size: clamp(1.6rem, 3.2vw, 2.3rem); line-height: 1.2; margin: 12px 0 14px; }
+.fb-head p { color: var(--muted); font-size: .93rem; line-height: 1.65; }
+
+.fb-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 44px; }
+.fb-card {
+  background: var(--bg); border: 1.5px solid var(--line); border-radius: var(--r);
+  padding: 26px 24px; margin: 0; display: flex; flex-direction: column; gap: 14px;
+}
+.fb-stars { color: #f5a623; font-size: 1rem; letter-spacing: 2px; line-height: 1; }
+/* The fifth star is the fraction the average did not reach — shown greyed
+   rather than dropped, so four-and-a-bit does not render as a clean five. */
+.fb-stars span { color: var(--line); }
+.fb-card blockquote { margin: 0; font-size: .97rem; line-height: 1.6; font-weight: 600; color: var(--ink); }
+.fb-card figcaption { font-size: .8rem; color: var(--muted); font-weight: 650; margin-top: auto; }
+
+.fb-dist { max-width: 520px; margin: 0 auto; }
+.fb-dist-row { display: grid; grid-template-columns: 34px 1fr 34px; align-items: center; gap: 12px; margin-bottom: 9px; }
+.fb-dist-row span { font-size: .8rem; font-weight: 700; color: var(--muted); }
+.fb-dist-row i { height: 8px; border-radius: 999px; background: var(--line); overflow: hidden; display: block; }
+.fb-dist-row i b { display: block; height: 100%; border-radius: 999px; background: var(--purple); }
+.fb-dist-row em { font-style: normal; font-size: .8rem; font-weight: 700; color: var(--ink); text-align: right; }
+.fb-dist-note { margin-top: 16px; text-align: center; font-size: .8rem; color: var(--muted); line-height: 1.6; }
+
 /* ---------- Download page ---------- */
 .dl-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 64px; align-items: center; }
 .dl-copy h2 { font-size: clamp(1.75rem, 3.4vw, 2.5rem); line-height: 1.15; margin-bottom: 16px; }
@@ -613,6 +639,7 @@ footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; 
   .contact-grid { grid-template-columns: 1fr; gap: 14px; }
   /* Phone above the copy: the badge is the point of this page and should not
      be pushed below a tall mockup on a narrow screen. */
+  .fb-grid { grid-template-columns: 1fr; gap: 14px; }
   .dl-grid { grid-template-columns: 1fr; gap: 40px; }
   .dl-visual { order: -1; }
   .dl-visual .phone { max-width: 230px; }
