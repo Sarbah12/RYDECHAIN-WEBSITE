@@ -431,16 +431,66 @@ footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; 
 
 .field { margin-bottom: 18px; }
 .field label { display: block; font-size: .84rem; font-weight: 700; margin-bottom: 7px; }
-.field input, .field select {
+.field input, .field select, .field textarea {
   width: 100%; padding: 13px 16px; border-radius: var(--r-sm);
   border: 1.5px solid var(--line); background: var(--bg);
   font-family: inherit; font-size: .94rem; color: var(--ink);
   transition: border-color .15s, background .15s;
 }
-.field input:focus, .field select:focus { outline: none; border-color: var(--purple); background: #fff; }
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--purple); background: #fff; }
+/* Vertical only: a textarea that can be dragged wider escapes the form card. */
+.field textarea { resize: vertical; min-height: 130px; line-height: 1.55; }
 .field input[aria-invalid="true"] { border-color: var(--danger, #ef4444); }
 .field .hint { font-size: .77rem; color: var(--muted); margin-top: 6px; }
 .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* "RydeChain is live" — launch announcement above the hero headline. */
+.live-pill {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 8px 16px 8px 13px; margin-bottom: 22px;
+  border-radius: 999px; border: 1.5px solid var(--purple-300);
+  background: var(--purple-soft); color: var(--purple-dark);
+  font-size: .84rem; font-weight: 650; text-decoration: none; line-height: 1;
+  transition: border-color .15s, transform .15s;
+}
+.live-pill:hover { border-color: var(--purple); transform: translateY(-1px); }
+.live-pill strong { font-weight: 800; }
+.live-sep { opacity: .45; }
+.live-arrow { width: 15px; height: 15px; transition: transform .15s; }
+.live-pill:hover .live-arrow { transform: translateX(3px); }
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--success, #16a34a);
+  box-shadow: 0 0 0 0 rgba(22, 163, 74, .55); animation: live-ping 2s ease-out infinite;
+}
+@keyframes live-ping {
+  0%   { box-shadow: 0 0 0 0 rgba(22, 163, 74, .55); }
+  70%  { box-shadow: 0 0 0 7px rgba(22, 163, 74, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0); }
+}
+
+/* Contact channels — the ways to reach us, above the message form. */
+/* auto-fit rather than a fixed count: channels get added and removed, and the
+   row should reflow instead of needing this number kept in sync with the page. */
+.contact-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(215px, 1fr)); gap: 20px;
+  max-width: 1060px; margin: 0 auto 44px;
+}
+.contact-card {
+  display: block; background: var(--panel); border-radius: var(--r);
+  border: 1.5px solid var(--line); padding: 26px 24px; text-decoration: none;
+  color: inherit; transition: border-color .15s, transform .15s, box-shadow .15s;
+}
+.contact-card:hover {
+  border-color: var(--purple); transform: translateY(-3px); box-shadow: var(--sh-card);
+}
+.contact-ico {
+  width: 44px; height: 44px; border-radius: 12px; background: var(--purple-soft);
+  color: var(--purple); display: grid; place-items: center; margin-bottom: 16px;
+}
+.contact-ico svg { width: 21px; height: 21px; }
+.contact-card h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.contact-card > p { font-weight: 700; color: var(--purple); font-size: .93rem; margin-bottom: 8px; word-break: break-word; }
+.contact-meta { display: block; font-size: .8rem; color: var(--muted); line-height: 1.5; }
 
 .docs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
 .doc {
@@ -514,6 +564,8 @@ footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; 
   .nav-mobile a { padding: 10px 0; font-weight: 650; font-size: .98rem; color: var(--ink); }
 
   .hero-grid, .stats-grid, .feat-grid, .tm-grid, .slab, .news { grid-template-columns: 1fr; }
+  /* Three across is already tight at 940 and unreadable below it. */
+  .contact-grid { grid-template-columns: 1fr; gap: 14px; }
   .hero-grid { gap: 20px; }
   .stats-grid, .feat-grid, .tm-grid { gap: 46px; }
   .slab { padding: 34px 30px; gap: 28px; margin-bottom: -70px; }
@@ -554,6 +606,8 @@ footer h4 { font-size: .8rem; text-transform: uppercase; letter-spacing: .12em; 
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  /* The dot still reads as "live" without pulsing at anyone. */
+  .live-dot { animation: none; }
 }
 
 /* ---- Launch event gallery (about) ---- */

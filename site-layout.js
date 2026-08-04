@@ -26,12 +26,14 @@
     roadmap: '/roadmap',
     download: '/download',
     'driver-signup': '/driver-signup',
+    contact: '/contact',
   };
 
   const NAV_LEFT = [
     { key: 'features', label: 'Features' },
     { key: 'how', label: 'How it works' },
     { key: 'about', label: 'About us' },
+    { key: 'contact', label: 'Contact' },
   ];
 
   const NAV_RIGHT = [
@@ -122,14 +124,15 @@
         <ul class="foot-links">
           <li><a href="/driver-signup">Drive with us</a></li>
           <li><a href="/about">About us</a></li>
-          <li><a href="mailto:admin@arcaccra.org">Contact</a></li>
+          <li><a href="/contact">Contact us</a></li>
+          <li><a href="tel:+233552893766">055 289 3766</a></li>
         </ul>
       </div>
       <div>
         <h4>Legal</h4>
         <ul class="foot-links">
-          <li><a href="https://api.arcaccra.com/static/legal/privacy.html" target="_blank" rel="noopener noreferrer">Privacy policy</a></li>
-          <li><a href="https://api.arcaccra.com/static/legal/policies.html" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></li>
+          <li><a href="https://api.arcaccra.com/privacy" target="_blank" rel="noopener noreferrer">Privacy policy</a></li>
+          <li><a href="https://api.arcaccra.com/terms" target="_blank" rel="noopener noreferrer">Terms &amp; conditions</a></li>
         </ul>
       </div>
     </div>

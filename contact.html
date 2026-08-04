@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Contact RydeChain — Talk to the team in Accra</title>
+<meta name="description" content="Reach the RydeChain team about a ride, a payment, driving with us, or anything else. Email, socials, and a message form." />
+<meta name="theme-color" content="#7b00ff" />
+<link rel="icon" href="/assets/favicon.png" />
+<link rel="canonical" href="https://app.arcaccra.com/contact" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body data-page="contact">
+
+<div id="site-header"></div>
+
+<main class="page-main">
+<section class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Contact us</span>
+    <h1>Talk to <span class="accent">a real person in Accra</span></h1>
+    <p>Whether it is a ride that went wrong, a payment you cannot account for, or you want to put your car on the road with us — write to us and we will come back to you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <a class="contact-card reveal" href="mailto:admin@arcaccra.org">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 6 9 6.5L21 6"/>
+          </svg>
+        </span>
+        <h3>Email us</h3>
+        <p>admin@arcaccra.org</p>
+        <span class="contact-meta">Best for account, payment and safety questions</span>
+      </a>
+
+      <a class="contact-card reveal" href="tel:+233552893766">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6.3 3.5h3l1.5 3.8-2 1.4a12.5 12.5 0 0 0 6.5 6.5l1.4-2 3.8 1.5v3a1.8 1.8 0 0 1-2 1.8A16.8 16.8 0 0 1 4.5 5.5a1.8 1.8 0 0 1 1.8-2z"/>
+          </svg>
+        </span>
+        <h3>Call us</h3>
+        <!-- Shown the way it is dialled in Ghana, linked in full international
+             form so it also works from a phone roaming or abroad. -->
+        <p>055 289 3766</p>
+        <span class="contact-meta">Fastest for something happening right now</span>
+      </a>
+
+      <a class="contact-card reveal" href="/driver-signup">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 16.5h14M6.5 16.5V19a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-2.5M20.5 16.5V19a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-2.5"/>
+            <path d="M4 16.5 5.6 10A2 2 0 0 1 7.5 8.5h9A2 2 0 0 1 18.4 10L20 16.5"/><circle cx="7.5" cy="13.5" r="1"/><circle cx="16.5" cy="13.5" r="1"/>
+          </svg>
+        </span>
+        <h3>Drive with us</h3>
+        <p>Register as a driver</p>
+        <span class="contact-meta">Upload your documents and start earning</span>
+      </a>
+
+      <a class="contact-card reveal" href="https://www.instagram.com/rydechain" target="_blank" rel="noopener noreferrer">
+        <span class="contact-ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.9c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1s-3.6 0-4.9-.1c-3.2-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.9s0-3.6.1-4.9C2.3 4 3.9 2.4 7.1 2.3 8.4 2.2 8.8 2.2 12 2.2zm0 5.6a4.2 4.2 0 1 0 0 8.4 4.2 4.2 0 0 0 0-8.4zm0 6.9a2.7 2.7 0 1 1 0-5.4 2.7 2.7 0 0 1 0 5.4zm5.4-7.1a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
+        </span>
+        <h3>Social</h3>
+        <p>@rydechain</p>
+        <span class="contact-meta">Instagram and TikTok — news and launch updates</span>
+      </a>
+
+    </div>
+
+    <form class="form-card" id="contactForm" novalidate>
+      <h2>Send us a message</h2>
+      <p class="sub">Tell us what happened and we will reply to the address you give us.</p>
+
+      <div class="alert" id="formAlert" role="status" aria-live="polite"></div>
+
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" autocomplete="email" required />
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="topic">What is this about?</label>
+        <select id="topic" name="topic">
+          <option value="A ride or a driver">A ride or a driver</option>
+          <option value="A payment">A payment</option>
+          <option value="Driving with RydeChain">Driving with RydeChain</option>
+          <option value="Safety or an incident">Safety or an incident</option>
+          <option value="Press or partnerships">Press or partnerships</option>
+          <option value="Something else">Something else</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+        <span class="hint">If it is about a specific trip, the date and the driver's name help us find it quickly.</span>
+      </div>
+
+      <div class="form-actions">
+        <button class="btn btn-primary" type="submit">Send message</button>
+        <span class="contact-meta">Opens your email app with the message ready to send.</span>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+
+<div id="site-footer"></div>
+<script src="/site-layout.js"></script>
+<script src="/script.js"></script>
+<script src="/contact.js"></script>
+</body>
+</html>
