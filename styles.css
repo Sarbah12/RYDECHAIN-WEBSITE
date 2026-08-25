@@ -357,6 +357,22 @@ section { padding: 90px 0; position: relative; }
 .post .thumb { height: 148px; background: var(--grad-soft); display: grid; place-items: center; color: #fff; font-weight: 800; font-size: .95rem; letter-spacing: -.01em; }
 .post:nth-child(2) .thumb { background: linear-gradient(135deg, var(--pink), #8b3dff); }
 .post:nth-child(3) .thumb { background: linear-gradient(135deg, #f5d84c, #ff9f43); color: #4a3400; }
+/* A step thumbnail carrying a real app screen instead of a flat number. The
+   screenshots are tall portraits, so they are anchored to the top — the useful
+   part of a phone screen is the top of it, and centring crops the heading away. */
+/* display:block overrides .thumb's grid — inside a grid the image is sized to
+   its own content, so height:100% resolves against nothing and a 552px-tall
+   screenshot sits in a 148px box, clipped rather than fitted. */
+.post .thumb-shot { position: relative; padding: 0; overflow: hidden; display: block; }
+.post .thumb-shot img { width: 100%; height: 100%; object-fit: cover; object-position: center 42%; display: block; }
+.post .thumb-num {
+  position: absolute; top: 10px; left: 10px; z-index: 1;
+  background: rgba(20, 12, 40, .62); color: #fff;
+  font-size: .7rem; font-weight: 800; letter-spacing: .02em;
+  padding: 4px 9px; border-radius: 999px;
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+
 .post .body { padding: 20px 22px 24px; }
 .post .meta { display: flex; align-items: center; gap: 9px; font-size: .66rem; font-weight: 700; color: var(--purple); margin-bottom: 9px; text-transform: uppercase; letter-spacing: .08em; }
 .post .meta span { color: var(--muted); text-transform: none; letter-spacing: 0; font-weight: 600; }
